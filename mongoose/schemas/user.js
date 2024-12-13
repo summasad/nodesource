@@ -1,26 +1,26 @@
 var mongoose = require("mongoose");
 const { Schema } = mongoose;
 const {
-  Type: { Object },
+  Types: { ObjectId },
 } = Schema;
 const userSchema = new Schema({
   name: {
     type: String,
-    require: true,
+    required: true,
     unique: true,
   },
   age: {
     type: Number,
-    require: true,
+    required: true,
   },
   married: {
     type: Boolean,
-    require: true,
+    required: true,
   },
   comment: String,
   createdAt: {
     type: Date,
-    require: Date.now,
+    default: Date.now,
   },
 });
 

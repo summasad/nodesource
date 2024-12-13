@@ -8,6 +8,7 @@ const conn = require("./schemas/connect");
 //라우터 연결
 const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
+const commentRouter = require("./routes/comment");
 const app = express();
 
 //웹 서버 세팅
@@ -16,7 +17,7 @@ app.set("port", process.env.PORT || port);
 app.set("view engine", "njk");
 
 //nunjucks
-nunjucks.configure("view", {
+nunjucks.configure("views", {
   express: app,
   watch: true,
 });
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
 app.use("/users", userRouter);
+app.use("/comments", commentRouter);
 
 //404 오류
 app.use((req, res, next) => {
